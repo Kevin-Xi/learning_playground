@@ -13,3 +13,12 @@ NOT(NOT(T)) == T;
 
 AND(T)(T) == T;
 AND(T)(NOT(T)) == F;
+
+
+const ZERO = f => x => x;
+const ONE = f => x => f(x);
+const TWO = f => x => f(f(x));
+
+const INC = n => f => x => f(n(f)(x));
+const ADD = a => b => f => x => a(f)(b(f)(x));
+const MUL = a => b => f => x => a(b(f))(x);
