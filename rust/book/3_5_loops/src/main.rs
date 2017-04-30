@@ -28,6 +28,13 @@ fn main() {
     for n in 1..10 {
         println!("fib {} is {}", n, fib(n));
     }
+    let mut f_fib = make_fib();
+    for n in 1..10 {
+        println!("f_fib {} is {}", n, f_fib(n));
+    }
+    for n in 1..10 {
+        println!("f_fib {} is {}", n, f_fib(n));
+    }
 }
 
 fn fib(n: i32) -> i32 {
@@ -42,4 +49,26 @@ fn fib(n: i32) -> i32 {
     }
 
     res
+}
+
+// Just a try before know anything about borrow
+// help from compiler's hint
+fn make_fib() -> Box<FnMut(i32) -> i32> {
+    let mut rec = vec![1, 1];
+    let mut sz = 2;
+    Box::new(move |n| {
+        if n <= sz {
+            println!("hit!");
+            rec[(n - 1) as usize]
+        } else {
+            println!("miss!");
+            for i in sz..n {
+                let p2 = rec[(i - 2) as usize];
+                let p1 = rec[(i - 1) as usize];
+                rec.push(p1 + p2);
+                sz = sz + 1;
+            }
+            rec[(n - 1) as usize]
+        }
+    })
 }
