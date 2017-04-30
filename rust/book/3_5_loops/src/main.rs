@@ -35,7 +35,7 @@ fn fib(n: i32) -> i32 {
     let mut nxt = 1;
     let mut res = 0;
 
-    for i in 0..n {
+    for _ in 0..n {
         res = cur;
         cur = nxt;
         nxt = res + nxt;
