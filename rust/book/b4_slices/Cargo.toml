@@ -1,0 +1,6 @@
+[package]
+name = "b4_slices"
+version = "0.1.0"
+authors = ["Kevin Xi <kevin.xgr@gmail.com>"]
+
+[dependencies]
