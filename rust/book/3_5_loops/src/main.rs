@@ -29,12 +29,14 @@ fn main() {
         println!("fib {} is {}", n, fib(n));
     }
     let mut f_fib = make_fib();
-    for n in 1..10 {
+    for n in (1..10).rev() {
         println!("f_fib {} is {}", n, f_fib(n));
     }
-    for n in 1..10 {
-        println!("f_fib {} is {}", n, f_fib(n));
-    }
+
+    // let f_fib2 = make_fib2();
+    // for n in (1..10).rev() {
+    //     println!("f_fib2 {} is {}", n, f_fib2(n));
+    // }
 }
 
 fn fib(n: i32) -> i32 {
@@ -72,3 +74,9 @@ fn make_fib() -> Box<FnMut(i32) -> i32> {
         }
     })
 }
+/* will not compile. know not how much space to store closure
+fn make_fib2() -> Fn(i32) -> i32 {
+    let y = 0;
+    |x| x + y
+}
+*/
