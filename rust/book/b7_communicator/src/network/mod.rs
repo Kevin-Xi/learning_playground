@@ -1,4 +1,4 @@
-fn connect() {}
+pub fn connect() {}
 
 // can also put mod inside another mod
-mod server;
+pub mod server;

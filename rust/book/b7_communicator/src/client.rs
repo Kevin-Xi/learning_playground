@@ -1,3 +1,3 @@
 // no need to write mod
-fn connect() {
+pub fn connect() {
 }
