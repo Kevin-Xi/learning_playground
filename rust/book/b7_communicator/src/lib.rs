@@ -8,8 +8,17 @@ pub mod client;
 
 pub mod network;
 
+// cargo test
 #[cfg(test)]
 mod tests {
+    // super like ..
+    // :: like /
+    use super::client;
+    // or `use super::client::connect;` and directly call connect
+    // or `use super::client::*;` and directly call connect
+
     #[test]
-    fn it_works() {}
+    fn it_works() {
+        client::connect();
+    }
 }
