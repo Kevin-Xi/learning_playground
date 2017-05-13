@@ -1,0 +1,6 @@
+[package]
+name = "b8_vectors"
+version = "0.1.0"
+authors = ["Kevin Xi <kevin.xgr@gmail.com>"]
+
+[dependencies]
