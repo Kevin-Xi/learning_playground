@@ -6,6 +6,11 @@ fn main() {
     let res = get_mmm(&arr);
 
     println!("{:?}", res);
+
+    let cons_word = String::from("first");
+    println!("{} -> {}", cons_word, to_pig_latin(&cons_word));
+    let vow_word = String::from("apple");
+    println!("{} -> {}", vow_word, to_pig_latin(&vow_word));
 }
 
 fn get_mmm(lst: &[i32]) -> Vec<f64> {
@@ -46,4 +51,11 @@ fn mode(lst: &[i32]) -> i32 {
     }
 
     max_num
+}
+
+fn to_pig_latin(s: &str) -> String {
+    match s.chars().nth(0).unwrap() {
+        'a' | 'e' | 'i' | 'o' | 'u' => s.to_owned() + "-hay",
+        _ => s[1..].to_owned() + "-" + s[0..1].to_owned().as_str() + "ay"
+    }
 }
