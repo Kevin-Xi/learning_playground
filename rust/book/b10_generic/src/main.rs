@@ -1,7 +1,13 @@
 // generics has no runtime overhead
 
-// not compile now
-fn largest<T>(list: &[T]) -> T {
+fn largest<T: PartialOrd + Copy>(list: &[T]) -> T {
+    // if T only bound to PartialOrd(without Copy),
+    // T maybe not a known sized on stack(T can't copied).
+    // It seems that `=` will move by default, but `list`
+    // is &[T] that can't move, [T] will fix this check.
+    // or, use PartialOrd + Clone and use clone() inside,
+    // need to allocate in the heap (which is slow) this way.
+    // or, return &T instead of T, so no Copy or CLone needed.
     let mut largest = list[0];
 
     for &item in list.iter() {
