@@ -8,7 +8,7 @@ struct Point<T, U> {
 impl<T, U> Point<T, U> {
     // V, W after mixup only to do with the method
     // if add T, will compile err: T be shadowed
-    fn mixup<V, W, T>(self, other: Point<V, W>) -> Point<T, W> {
+    fn mixup<V, W>(self, other: Point<V, W>) -> Point<T, W> {
         Point {
             x: self.x,
             y: other.y
