@@ -1,3 +1,18 @@
+// generics has no runtime overhead
+
+// not compile now
+fn largest<T>(list: &[T]) -> T {
+    let mut largest = list[0];
+
+    for &item in list.iter() {
+        if item > largest {
+            largest = item;
+        }
+    }
+
+    largest
+}
+
 #[derive(Debug)]
 struct Point<T, U> {
     x: T,
