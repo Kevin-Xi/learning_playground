@@ -1,3 +1,5 @@
+use std::fmt::Display;
+
 #[derive(Debug)]
 struct ImportantExcerpt<'a> {
     part: &'a str   // if hold ref, need lifetime anno
@@ -72,5 +74,16 @@ fn longest<'a>(str1: &'a str, str2: &'a str) -> &'a str {
         str1
     } else {
         str2
+    }
+}
+
+fn longest_with_an_announcement<'a, T>(x: &'a str, y: &'a str, ann: T) -> &'a str
+    where T: Display
+{
+    println!("Announcement! {}", ann);
+    if x.len() > y.len() {
+        x
+    } else {
+        y
     }
 }
