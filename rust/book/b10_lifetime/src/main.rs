@@ -1,3 +1,8 @@
+#[derive(Debug)]
+struct ImportantExcerpt<'a> {
+    part: &'a str   // if hold ref, need lifetime anno
+}
+
 fn main() {
     // --- lifetime prevent dangling ref
     /*
@@ -30,6 +35,12 @@ fn main() {
     }
     println!("Then longest string is {}", result);
     */
+
+    let novel = String::from("Call me Ishmael. Some years ago...");
+    let first_sentence = novel.split('.')
+        .next()
+        .expect("Could not find a '.'");
+    let i = ImportantExcerpt {part: first_sentence};
 }
 
 // compiler don't know if the result is ref to str1 or str2,
