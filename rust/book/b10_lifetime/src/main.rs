@@ -3,6 +3,19 @@ struct ImportantExcerpt<'a> {
     part: &'a str   // if hold ref, need lifetime anno
 }
 
+impl<'a> ImportantExcerpt<'a> {
+    fn level(&self) -> i32 {
+        3
+    }
+
+    // one of the param is self, so all return
+    // lifetime is same to self
+    fn announce_and_return_part(&self, announcement: &str) -> &str {
+        println!("Attention please: {}", announcement);
+        self.part
+    }
+}
+
 fn main() {
     // --- lifetime prevent dangling ref
     /*
