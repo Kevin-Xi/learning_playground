@@ -54,6 +54,9 @@ fn main() {
         .next()
         .expect("Could not find a '.'");
     let i = ImportantExcerpt {part: first_sentence};
+
+    // entire duration of the program
+    let s: &'static str = "I have a static lifetime.";
 }
 
 // compiler don't know if the result is ref to str1 or str2,
