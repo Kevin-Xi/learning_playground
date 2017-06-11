@@ -5,8 +5,12 @@ mod tests {
     }
 
     #[test]
+    #[ignore]
     fn another() {
-        // panic!("Make this test fail");
+        // -- --test-threads=1  // not run parallel
+        // cargo test an    // run all start with an
+        // -- --ignored // only run ignored
+        panic!("Make this test fail");
     }
 
     use super::*;
