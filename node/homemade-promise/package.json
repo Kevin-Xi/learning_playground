@@ -1,0 +1,17 @@
+{
+  "name": "homemade-promise",
+  "version": "0.0.1",
+  "description": "A promise impl for learning & idea proving.",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "node examples/file.js"
+  },
+  "keywords": [
+    "promise"
+  ],
+  "author": "Kevin Xi <kevin.xgr@gmail.com>",
+  "license": "ISC"
+}
