@@ -78,4 +78,14 @@ Future.lift1 = function (fn) {
     return fut => fut.fmap(fn);
 }
 
+Future.lift2 = function (fn) {
+    return (fut1, fut2) => {
+        let f = new Future();
+        fut1.ready(v1 => fut2.ready(v2 => {
+            f.complete(fn(v1, v2));
+        }));
+        return f;
+    }
+}
+
 module.exports = Future;

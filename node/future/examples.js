@@ -77,4 +77,13 @@ logF(readDirF('.').fmap(files => readFileF(files[0], { encoding: 'utf8' })).flat
 // compose fmap and flatten as flatMap
 // readFileF depends on readDirF
 // we can chain them, as (Future<a>, a->Future<b>) -> Future<b>, (Future<b>, b->Future<c>) -> Future<c> ...
-logFDo(readDirF('.').flatMap(files => readFileF(files[0], { encoding: 'utf8' })));
+logF(readDirF('.').flatMap(files => readFileF(files[0], { encoding: 'utf8' })));
+
+// ---
+let concatF = Future.lift2((a, b) => a.concat(b));
+
+let readDirFResF = readDirF('.');
+let file0ResF = readDirFResF.flatMap(files => readFileF(files[0], { encoding: 'utf8' }));
+let file1ResF = readDirFResF.flatMap(files => readFileF(files[1], { encoding: 'utf8' }));
+
+logFDo(concatF(file0ResF, file1ResF));
