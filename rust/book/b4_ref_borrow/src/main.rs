@@ -12,6 +12,7 @@ fn main() {
     let a_r = &mut s2;
     change(a_r);
     println!("{}", a_r);    // so &mut is Copy itself
+    // seems not: https://www.reddit.com/r/rust/comments/46qwjv/why_can_i_use_an_mut_reference_twice/
 
     // ---
     // let other_r = &mut s2;   // can only have one ref at a time
