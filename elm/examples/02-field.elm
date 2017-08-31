@@ -22,7 +22,7 @@ type alias Model =
   }
 
 
-model : Model
+model : Model -- not necessary
 model =
   Model ""
 
@@ -49,5 +49,5 @@ view : Model -> Html Msg
 view model =
   div []
     [ input [ placeholder "Text to reverse", onInput Change ] []
-    , div [] [ text (String.reverse model.content) ]
+    , div [] [ text (String.reverse model.content) ]  -- still logic here, ?
     ]
