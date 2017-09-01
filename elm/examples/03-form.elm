@@ -80,18 +80,22 @@ viewValidation : Model -> Html msg
 viewValidation model =
   if model.check then -- todo abstract this
     let
-      (color, message) =
+      isAgeValid =
         case String.toInt model.age of
-          Result.Err _ -> ("red", "age must be number")
-          _ ->
-          if String.length model.password <= 8 then
-            ("red", "Password must longer than 8 chars")
-          else if not (String.any isUpper model.password && String.any isLower model.password && String.any isDigit model.password) then
-            ("red", "Password must contains upper, lower, digit chars")
-          else if model.password == model.passwordAgain then
-            ("green", "OK")
-          else
-            ("red", "Passwords do not match!")
+          Result.Err _ -> False
+          _ -> True
+
+      (color, message) =
+        if not isAgeValid then
+          ("red", "Age must be number")
+        else if String.length model.password <= 8 then
+          ("red", "Password must longer than 8 chars")
+        else if not (String.any isUpper model.password && String.any isLower model.password && String.any isDigit model.password) then
+          ("red", "Password must contains upper, lower, digit chars")
+        else if model.password == model.passwordAgain then
+          ("green", "OK")
+        else
+          ("red", "Passwords do not match!")
     in
       div [ style [("color", color)] ] [ text message ]
   else
